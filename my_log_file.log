@@ -1,0 +1,414 @@
+2024-12-17 22:05:22,227 - INFO - Data Processing Pipeline Initialized
+2024-12-17 22:05:22,228 - INFO - DataLoader initialized with file pattern: datasets/*
+2024-12-17 22:05:22,228 - INFO - DataJoiner initialized with join_type: inner, on_column: join_key
+2024-12-17 22:05:22,228 - INFO - ColumnDropper initialized with Columns to drop : ['BSE Code', 'NSE Code', 'Name', 'join_key']
+2024-12-17 22:05:22,228 - INFO - MissingValuePreprocessor initialized with strategy: mean, missing_threshold: 0.1
+2024-12-17 22:05:22,228 - INFO - ColumnRelevancePreprocessor initialized with Correlation Threshold: 0.1, Target Column: Current Price
+2024-12-17 22:05:22,228 - INFO - OutlierRemover initialized
+2024-12-17 22:05:22,228 - INFO - StandardizationPreprocessor initialized
+2024-12-17 22:05:22,228 - INFO - Scaler initialized
+2024-12-17 22:05:22,228 - INFO - OneHotEncoderPreprocessor initialized
+2024-12-17 22:05:22,228 - INFO - OneHotEncoder initialized
+2024-12-17 22:05:22,228 - INFO - TrainTestSplitter initialized with Test Size : 0.1 | Target Variable : Current Price | Random State : 234
+2024-12-17 22:05:22,228 - INFO - Pipeline Execution Started
+2024-12-17 22:05:22,229 - INFO - Loading data from files matching pattern: datasets/*
+2024-12-17 22:05:22,229 - INFO - Found files: ['datasets/other_metrics_final.csv', 'datasets/ratios_1_final.csv', 'datasets/Annual_P_L_1_final.csv', 'datasets/cash_flow_statments_final.csv', 'datasets/Balance_Sheet_final.csv']
+2024-12-17 22:05:22,229 - INFO - Processing file: datasets/other_metrics_final.csv with extension: csv
+2024-12-17 22:05:22,259 - INFO - Skipping column drop for file: datasets/other_metrics_final.csv
+2024-12-17 22:05:22,259 - INFO - Processing file: datasets/ratios_1_final.csv with extension: csv
+2024-12-17 22:05:22,285 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/ratios_1_final.csv
+2024-12-17 22:05:22,291 - INFO - Processing file: datasets/Annual_P_L_1_final.csv with extension: csv
+2024-12-17 22:05:22,324 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/Annual_P_L_1_final.csv
+2024-12-17 22:05:22,325 - INFO - Processing file: datasets/cash_flow_statments_final.csv with extension: csv
+2024-12-17 22:05:22,344 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/cash_flow_statments_final.csv
+2024-12-17 22:05:22,346 - INFO - Processing file: datasets/Balance_Sheet_final.csv with extension: csv
+2024-12-17 22:05:22,370 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/Balance_Sheet_final.csv
+2024-12-17 22:05:22,371 - INFO - Successfully loaded 5 data frames.
+2024-12-17 22:05:22,371 - INFO - Starting join operation with 4 other tables.
+2024-12-17 22:05:22,381 - INFO - Table 1 successfully joined.
+2024-12-17 22:05:22,394 - INFO - Table 2 successfully joined.
+2024-12-17 22:05:22,405 - INFO - Table 3 successfully joined.
+2024-12-17 22:05:22,416 - INFO - Table 4 successfully joined.
+2024-12-17 22:05:22,417 - INFO - Column Dropping Process Started
+2024-12-17 22:05:22,418 - INFO - Columns Dropped successfully
+2024-12-17 22:05:22,420 - INFO - Starting missing value handling process.
+2024-12-17 22:05:22,420 - INFO - Starting column drop based on missing value threshold: 0.1
+2024-12-17 22:05:22,425 - INFO - Successfully dropped columns exceeding missing threshold
+2024-12-17 22:05:22,425 - INFO - Remaining data after dropping columns: 173 columns.
+2024-12-17 22:05:22,459 - INFO - Concatenated numerical and categorical data frames.
+2024-12-17 22:05:22,460 - INFO - Missing value handling process completed successfully.
+2024-12-17 22:05:22,460 - INFO - Starting process for relevant column extraction
+2024-12-17 22:05:22,460 - INFO - Calculating correlation of numerical columns with target.
+2024-12-17 22:05:22,694 - INFO - Filtering columns with correlation greater than threshold: 0.1
+2024-12-17 22:05:22,701 - INFO - Relevant numerical columns based on correlation: ['Current Price', '52w Index', 'Down from 52w high', 'From 52w high', 'NCAVPS', 'Market Capitalization', 'Piotroski score', 'Public holding', 'FII holding', 'DII holding', 'EPS', 'EPS last year', 'EPS preceding year']
+2024-12-17 22:05:22,701 - INFO - Total relevant columns: 14
+2024-12-17 22:05:22,702 - INFO - Relevant Column extracted successfully | Total relevant col : 14
+2024-12-17 22:05:22,703 - INFO - Outlier Removal Process Started
+2024-12-17 22:05:22,712 - INFO - Outlier Removal Process completed successfully
+2024-12-17 22:05:22,712 - INFO - Standardization Process Started
+2024-12-17 22:05:22,712 - INFO - Identifying numerical and categorical columns.
+2024-12-17 22:05:22,712 - INFO - Found 13 numerical columns and 1 categorical columns.
+2024-12-17 22:05:22,712 - INFO - Scaling numerical columns.
+2024-12-17 22:05:22,715 - INFO - Scaling completed for numerical columns.
+2024-12-17 22:05:22,715 - INFO - Concatenating scaled numerical and categorical columns.
+2024-12-17 22:05:22,715 - INFO - Final data frame created with 14 columns.
+2024-12-17 22:05:22,715 - INFO - Standardization Process completed successfully
+2024-12-17 22:05:22,715 - INFO - One Hot Encoding Process started
+2024-12-17 22:05:22,716 - INFO - Separating numerical and categorical columns.
+2024-12-17 22:05:22,716 - INFO - Identified 13 numerical and 1 categorical columns.
+2024-12-17 22:05:22,716 - INFO - Encoding categorical columns using the encoder.
+2024-12-17 22:05:22,721 - INFO - Concatenating numerical and encoded categorical data frames.
+2024-12-17 22:05:22,722 - INFO - Final data frame created with 104 columns.
+2024-12-17 22:05:22,722 - INFO - One Hot Encoding Process completed successfully
+2024-12-17 22:05:22,722 - INFO - Train Test split process started successfully
+2024-12-17 22:05:22,722 - INFO - Separating independent and dependent variables.
+2024-12-17 22:05:22,723 - INFO - Independent variables: 103 columns, Dependent variable: 1 columns.
+2024-12-17 22:05:22,723 - INFO - Splitting data into training and testing sets with test size = 0.1.
+2024-12-17 22:05:22,727 - INFO - Data split completed. Training set size: 2361, Test set size: 263.
+2024-12-17 22:05:22,727 - INFO - Train Test split process started completed successfully
+2024-12-17 22:05:22,727 - INFO - Pipeline Execution Completed Successfully.
+2024-12-17 22:12:27,579 - INFO - Data Processing Pipeline Initialized
+2024-12-17 22:12:27,580 - INFO - DataLoader initialized with file pattern: datasets/*
+2024-12-17 22:12:27,580 - INFO - DataJoiner initialized with join_type: inner, on_column: join_key
+2024-12-17 22:12:27,580 - INFO - ColumnDropper initialized with Columns to drop : ['BSE Code', 'NSE Code', 'Name', 'join_key']
+2024-12-17 22:12:27,581 - INFO - MissingValuePreprocessor initialized with strategy: mean, missing_threshold: 0.1
+2024-12-17 22:12:27,581 - INFO - ColumnRelevancePreprocessor initialized with Correlation Threshold: 0.1, Target Column: Current Price
+2024-12-17 22:12:27,581 - INFO - OutlierRemover initialized
+2024-12-17 22:12:27,581 - INFO - StandardizationPreprocessor initialized
+2024-12-17 22:12:27,581 - INFO - Scaler initialized
+2024-12-17 22:12:27,581 - INFO - OneHotEncoderPreprocessor initialized
+2024-12-17 22:12:27,581 - INFO - OneHotEncoder initialized
+2024-12-17 22:12:27,582 - INFO - TrainTestSplitter initialized with Test Size : 0.1 | Target Variable : Current Price | Random State : 234
+2024-12-17 22:12:27,582 - INFO - Pipeline Execution Started
+2024-12-17 22:12:27,582 - INFO - Loading data from files matching pattern: datasets/*
+2024-12-17 22:12:27,582 - INFO - Found files: ['datasets/other_metrics_final.csv', 'datasets/ratios_1_final.csv', 'datasets/Annual_P_L_1_final.csv', 'datasets/cash_flow_statments_final.csv', 'datasets/Balance_Sheet_final.csv']
+2024-12-17 22:12:27,582 - INFO - Processing file: datasets/other_metrics_final.csv with extension: csv
+2024-12-17 22:12:27,616 - INFO - Skipping column drop for file: datasets/other_metrics_final.csv
+2024-12-17 22:12:27,616 - INFO - Processing file: datasets/ratios_1_final.csv with extension: csv
+2024-12-17 22:12:27,637 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/ratios_1_final.csv
+2024-12-17 22:12:27,639 - INFO - Processing file: datasets/Annual_P_L_1_final.csv with extension: csv
+2024-12-17 22:12:27,662 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/Annual_P_L_1_final.csv
+2024-12-17 22:12:27,663 - INFO - Processing file: datasets/cash_flow_statments_final.csv with extension: csv
+2024-12-17 22:12:27,678 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/cash_flow_statments_final.csv
+2024-12-17 22:12:27,679 - INFO - Processing file: datasets/Balance_Sheet_final.csv with extension: csv
+2024-12-17 22:12:27,698 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/Balance_Sheet_final.csv
+2024-12-17 22:12:27,699 - INFO - Successfully loaded 5 data frames.
+2024-12-17 22:12:27,699 - INFO - Starting join operation with 4 other tables.
+2024-12-17 22:12:27,705 - INFO - Table 1 successfully joined.
+2024-12-17 22:12:27,712 - INFO - Table 2 successfully joined.
+2024-12-17 22:12:27,720 - INFO - Table 3 successfully joined.
+2024-12-17 22:12:27,729 - INFO - Table 4 successfully joined.
+2024-12-17 22:12:27,730 - INFO - Column Dropping Process Started
+2024-12-17 22:12:27,732 - INFO - Columns Dropped successfully
+2024-12-17 22:12:27,733 - INFO - Starting missing value handling process.
+2024-12-17 22:12:27,733 - INFO - Starting column drop based on missing value threshold: 0.1
+2024-12-17 22:12:27,738 - INFO - Successfully dropped columns exceeding missing threshold
+2024-12-17 22:12:27,738 - INFO - Remaining data after dropping columns: 173 columns.
+2024-12-17 22:12:27,765 - INFO - Concatenated numerical and categorical data frames.
+2024-12-17 22:12:27,765 - INFO - Missing value handling process completed successfully.
+2024-12-17 22:12:27,765 - INFO - Starting process for relevant column extraction
+2024-12-17 22:12:27,765 - INFO - Calculating correlation of numerical columns with target.
+2024-12-17 22:12:27,967 - INFO - Filtering columns with correlation greater than threshold: 0.1
+2024-12-17 22:12:27,967 - INFO - Relevant numerical columns based on correlation: ['Current Price', '52w Index', 'Down from 52w high', 'From 52w high', 'NCAVPS', 'Market Capitalization', 'Piotroski score', 'Public holding', 'FII holding', 'DII holding', 'EPS', 'EPS last year', 'EPS preceding year']
+2024-12-17 22:12:27,968 - INFO - Total relevant columns: 14
+2024-12-17 22:12:27,968 - INFO - Relevant Column extracted successfully | Total relevant col : 14
+2024-12-17 22:12:27,968 - INFO - Outlier Removal Process Started
+2024-12-17 22:12:27,972 - INFO - Outlier Removal Process completed successfully
+2024-12-17 22:12:27,972 - INFO - Standardization Process Started
+2024-12-17 22:12:27,972 - INFO - Identifying numerical and categorical columns.
+2024-12-17 22:12:27,973 - INFO - Found 13 numerical columns and 1 categorical columns.
+2024-12-17 22:12:27,973 - INFO - Scaling numerical columns.
+2024-12-17 22:12:27,974 - INFO - Scaling completed for numerical columns.
+2024-12-17 22:12:27,974 - INFO - Concatenating scaled numerical and categorical columns.
+2024-12-17 22:12:27,975 - INFO - Final data frame created with 14 columns.
+2024-12-17 22:12:27,975 - INFO - Standardization Process completed successfully
+2024-12-17 22:12:27,975 - INFO - One Hot Encoding Process started
+2024-12-17 22:12:27,975 - INFO - Separating numerical and categorical columns.
+2024-12-17 22:12:27,975 - INFO - Identified 13 numerical and 1 categorical columns.
+2024-12-17 22:12:27,975 - INFO - Encoding categorical columns using the encoder.
+2024-12-17 22:12:27,977 - INFO - Concatenating numerical and encoded categorical data frames.
+2024-12-17 22:12:27,978 - INFO - Final data frame created with 104 columns.
+2024-12-17 22:12:27,978 - INFO - One Hot Encoding Process completed successfully
+2024-12-17 22:12:27,978 - INFO - Train Test split process started successfully
+2024-12-17 22:12:27,978 - INFO - Separating independent and dependent variables.
+2024-12-17 22:12:27,978 - INFO - Independent variables: 103 columns, Dependent variable: 1 columns.
+2024-12-17 22:12:27,979 - INFO - Splitting data into training and testing sets with test size = 0.1.
+2024-12-17 22:12:27,980 - INFO - Data split completed. Training set size: 2361, Test set size: 263.
+2024-12-17 22:12:27,980 - INFO - Train Test split process started completed successfully
+2024-12-17 22:12:27,980 - INFO - Pipeline Execution Completed Successfully.
+2024-12-17 22:12:42,266 - INFO - Data Processing Pipeline Initialized
+2024-12-17 22:12:42,266 - INFO - DataLoader initialized with file pattern: datasets/*
+2024-12-17 22:12:42,266 - INFO - DataJoiner initialized with join_type: inner, on_column: join_key
+2024-12-17 22:12:42,266 - INFO - ColumnDropper initialized with Columns to drop : ['BSE Code', 'NSE Code', 'Name', 'join_key']
+2024-12-17 22:12:42,267 - INFO - MissingValuePreprocessor initialized with strategy: mean, missing_threshold: 0.1
+2024-12-17 22:12:42,267 - INFO - ColumnRelevancePreprocessor initialized with Correlation Threshold: 0.1, Target Column: Current Price
+2024-12-17 22:12:42,267 - INFO - OutlierRemover initialized
+2024-12-17 22:12:42,267 - INFO - StandardizationPreprocessor initialized
+2024-12-17 22:12:42,267 - INFO - Scaler initialized
+2024-12-17 22:12:42,267 - INFO - OneHotEncoderPreprocessor initialized
+2024-12-17 22:12:42,267 - INFO - OneHotEncoder initialized
+2024-12-17 22:12:42,267 - INFO - TrainTestSplitter initialized with Test Size : 0.1 | Target Variable : Current Price | Random State : 234
+2024-12-17 22:12:42,267 - INFO - Pipeline Execution Started
+2024-12-17 22:12:42,267 - INFO - Loading data from files matching pattern: datasets/*
+2024-12-17 22:12:42,268 - INFO - Found files: ['datasets/other_metrics_final.csv', 'datasets/ratios_1_final.csv', 'datasets/Annual_P_L_1_final.csv', 'datasets/cash_flow_statments_final.csv', 'datasets/Balance_Sheet_final.csv']
+2024-12-17 22:12:42,268 - INFO - Processing file: datasets/other_metrics_final.csv with extension: csv
+2024-12-17 22:12:42,289 - INFO - Skipping column drop for file: datasets/other_metrics_final.csv
+2024-12-17 22:12:42,289 - INFO - Processing file: datasets/ratios_1_final.csv with extension: csv
+2024-12-17 22:12:42,307 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/ratios_1_final.csv
+2024-12-17 22:12:42,308 - INFO - Processing file: datasets/Annual_P_L_1_final.csv with extension: csv
+2024-12-17 22:12:42,331 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/Annual_P_L_1_final.csv
+2024-12-17 22:12:42,332 - INFO - Processing file: datasets/cash_flow_statments_final.csv with extension: csv
+2024-12-17 22:12:42,348 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/cash_flow_statments_final.csv
+2024-12-17 22:12:42,349 - INFO - Processing file: datasets/Balance_Sheet_final.csv with extension: csv
+2024-12-17 22:12:42,367 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/Balance_Sheet_final.csv
+2024-12-17 22:12:42,368 - INFO - Successfully loaded 5 data frames.
+2024-12-17 22:12:42,368 - INFO - Starting join operation with 4 other tables.
+2024-12-17 22:12:42,373 - INFO - Table 1 successfully joined.
+2024-12-17 22:12:42,380 - INFO - Table 2 successfully joined.
+2024-12-17 22:12:42,387 - INFO - Table 3 successfully joined.
+2024-12-17 22:12:42,396 - INFO - Table 4 successfully joined.
+2024-12-17 22:12:42,396 - INFO - Column Dropping Process Started
+2024-12-17 22:12:42,398 - INFO - Columns Dropped successfully
+2024-12-17 22:12:42,398 - INFO - Starting missing value handling process.
+2024-12-17 22:12:42,398 - INFO - Starting column drop based on missing value threshold: 0.1
+2024-12-17 22:12:42,401 - INFO - Successfully dropped columns exceeding missing threshold
+2024-12-17 22:12:42,401 - INFO - Remaining data after dropping columns: 173 columns.
+2024-12-17 22:12:42,422 - INFO - Concatenated numerical and categorical data frames.
+2024-12-17 22:12:42,423 - INFO - Missing value handling process completed successfully.
+2024-12-17 22:12:42,423 - INFO - Starting process for relevant column extraction
+2024-12-17 22:12:42,423 - INFO - Calculating correlation of numerical columns with target.
+2024-12-17 22:12:42,603 - INFO - Filtering columns with correlation greater than threshold: 0.1
+2024-12-17 22:12:42,603 - INFO - Relevant numerical columns based on correlation: ['Current Price', '52w Index', 'Down from 52w high', 'From 52w high', 'NCAVPS', 'Market Capitalization', 'Piotroski score', 'Public holding', 'FII holding', 'DII holding', 'EPS', 'EPS last year', 'EPS preceding year']
+2024-12-17 22:12:42,604 - INFO - Total relevant columns: 14
+2024-12-17 22:12:42,604 - INFO - Relevant Column extracted successfully | Total relevant col : 14
+2024-12-17 22:12:42,605 - INFO - Outlier Removal Process Started
+2024-12-17 22:12:42,609 - INFO - Outlier Removal Process completed successfully
+2024-12-17 22:12:42,609 - INFO - Standardization Process Started
+2024-12-17 22:12:42,609 - INFO - Identifying numerical and categorical columns.
+2024-12-17 22:12:42,610 - INFO - Found 13 numerical columns and 1 categorical columns.
+2024-12-17 22:12:42,610 - INFO - Scaling numerical columns.
+2024-12-17 22:12:42,611 - INFO - Scaling completed for numerical columns.
+2024-12-17 22:12:42,612 - INFO - Concatenating scaled numerical and categorical columns.
+2024-12-17 22:12:42,612 - INFO - Final data frame created with 14 columns.
+2024-12-17 22:12:42,612 - INFO - Standardization Process completed successfully
+2024-12-17 22:12:42,612 - INFO - One Hot Encoding Process started
+2024-12-17 22:12:42,612 - INFO - Separating numerical and categorical columns.
+2024-12-17 22:12:42,612 - INFO - Identified 13 numerical and 1 categorical columns.
+2024-12-17 22:12:42,612 - INFO - Encoding categorical columns using the encoder.
+2024-12-17 22:12:42,613 - INFO - Concatenating numerical and encoded categorical data frames.
+2024-12-17 22:12:42,614 - INFO - Final data frame created with 104 columns.
+2024-12-17 22:12:42,614 - INFO - One Hot Encoding Process completed successfully
+2024-12-17 22:12:42,614 - INFO - Train Test split process started successfully
+2024-12-17 22:12:42,614 - INFO - Separating independent and dependent variables.
+2024-12-17 22:12:42,615 - INFO - Independent variables: 103 columns, Dependent variable: 1 columns.
+2024-12-17 22:12:42,615 - INFO - Splitting data into training and testing sets with test size = 0.1.
+2024-12-17 22:12:42,616 - INFO - Data split completed. Training set size: 2361, Test set size: 263.
+2024-12-17 22:12:42,616 - INFO - Train Test split process started completed successfully
+2024-12-17 22:12:42,616 - INFO - Pipeline Execution Completed Successfully.
+2024-12-17 22:13:02,680 - INFO - Data Processing Pipeline Initialized
+2024-12-17 22:13:02,680 - INFO - DataLoader initialized with file pattern: datasets/*
+2024-12-17 22:13:02,680 - INFO - DataJoiner initialized with join_type: inner, on_column: join_key
+2024-12-17 22:13:02,680 - INFO - ColumnDropper initialized with Columns to drop : ['BSE Code', 'NSE Code', 'Name', 'join_key']
+2024-12-17 22:13:02,680 - INFO - MissingValuePreprocessor initialized with strategy: mean, missing_threshold: 0.1
+2024-12-17 22:13:02,680 - INFO - ColumnRelevancePreprocessor initialized with Correlation Threshold: 0.1, Target Column: Current Price
+2024-12-17 22:13:02,681 - INFO - OutlierRemover initialized
+2024-12-17 22:13:02,681 - INFO - StandardizationPreprocessor initialized
+2024-12-17 22:13:02,681 - INFO - Scaler initialized
+2024-12-17 22:13:02,681 - INFO - OneHotEncoderPreprocessor initialized
+2024-12-17 22:13:02,681 - INFO - OneHotEncoder initialized
+2024-12-17 22:13:02,681 - INFO - TrainTestSplitter initialized with Test Size : 0.1 | Target Variable : Current Price | Random State : 234
+2024-12-17 22:13:02,682 - INFO - Pipeline Execution Started
+2024-12-17 22:13:02,682 - INFO - Loading data from files matching pattern: datasets/*
+2024-12-17 22:13:02,682 - INFO - Found files: ['datasets/other_metrics_final.csv', 'datasets/ratios_1_final.csv', 'datasets/Annual_P_L_1_final.csv', 'datasets/cash_flow_statments_final.csv', 'datasets/Balance_Sheet_final.csv']
+2024-12-17 22:13:02,682 - INFO - Processing file: datasets/other_metrics_final.csv with extension: csv
+2024-12-17 22:13:02,707 - INFO - Skipping column drop for file: datasets/other_metrics_final.csv
+2024-12-17 22:13:02,707 - INFO - Processing file: datasets/ratios_1_final.csv with extension: csv
+2024-12-17 22:13:02,736 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/ratios_1_final.csv
+2024-12-17 22:13:02,737 - INFO - Processing file: datasets/Annual_P_L_1_final.csv with extension: csv
+2024-12-17 22:13:02,762 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/Annual_P_L_1_final.csv
+2024-12-17 22:13:02,763 - INFO - Processing file: datasets/cash_flow_statments_final.csv with extension: csv
+2024-12-17 22:13:02,777 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/cash_flow_statments_final.csv
+2024-12-17 22:13:02,778 - INFO - Processing file: datasets/Balance_Sheet_final.csv with extension: csv
+2024-12-17 22:13:02,800 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/Balance_Sheet_final.csv
+2024-12-17 22:13:02,801 - INFO - Successfully loaded 5 data frames.
+2024-12-17 22:13:02,801 - INFO - Starting join operation with 4 other tables.
+2024-12-17 22:13:02,806 - INFO - Table 1 successfully joined.
+2024-12-17 22:13:02,813 - INFO - Table 2 successfully joined.
+2024-12-17 22:13:02,820 - INFO - Table 3 successfully joined.
+2024-12-17 22:13:02,827 - INFO - Table 4 successfully joined.
+2024-12-17 22:13:02,828 - INFO - Column Dropping Process Started
+2024-12-17 22:13:02,830 - INFO - Columns Dropped successfully
+2024-12-17 22:13:02,831 - INFO - Starting missing value handling process.
+2024-12-17 22:13:02,831 - INFO - Starting column drop based on missing value threshold: 0.1
+2024-12-17 22:13:02,834 - INFO - Successfully dropped columns exceeding missing threshold
+2024-12-17 22:13:02,835 - INFO - Remaining data after dropping columns: 173 columns.
+2024-12-17 22:13:02,868 - INFO - Concatenated numerical and categorical data frames.
+2024-12-17 22:13:02,868 - INFO - Missing value handling process completed successfully.
+2024-12-17 22:13:02,868 - INFO - Starting process for relevant column extraction
+2024-12-17 22:13:02,868 - INFO - Calculating correlation of numerical columns with target.
+2024-12-17 22:13:03,067 - INFO - Filtering columns with correlation greater than threshold: 0.1
+2024-12-17 22:13:03,067 - INFO - Relevant numerical columns based on correlation: ['Current Price', '52w Index', 'Down from 52w high', 'From 52w high', 'NCAVPS', 'Market Capitalization', 'Piotroski score', 'Public holding', 'FII holding', 'DII holding', 'EPS', 'EPS last year', 'EPS preceding year']
+2024-12-17 22:13:03,068 - INFO - Total relevant columns: 14
+2024-12-17 22:13:03,068 - INFO - Relevant Column extracted successfully | Total relevant col : 14
+2024-12-17 22:13:03,070 - INFO - Outlier Removal Process Started
+2024-12-17 22:13:03,075 - INFO - Outlier Removal Process completed successfully
+2024-12-17 22:13:03,075 - INFO - Standardization Process Started
+2024-12-17 22:13:03,075 - INFO - Identifying numerical and categorical columns.
+2024-12-17 22:13:03,076 - INFO - Found 13 numerical columns and 1 categorical columns.
+2024-12-17 22:13:03,076 - INFO - Scaling numerical columns.
+2024-12-17 22:13:03,078 - INFO - Scaling completed for numerical columns.
+2024-12-17 22:13:03,078 - INFO - Concatenating scaled numerical and categorical columns.
+2024-12-17 22:13:03,078 - INFO - Final data frame created with 14 columns.
+2024-12-17 22:13:03,078 - INFO - Standardization Process completed successfully
+2024-12-17 22:13:03,078 - INFO - One Hot Encoding Process started
+2024-12-17 22:13:03,078 - INFO - Separating numerical and categorical columns.
+2024-12-17 22:13:03,079 - INFO - Identified 13 numerical and 1 categorical columns.
+2024-12-17 22:13:03,079 - INFO - Encoding categorical columns using the encoder.
+2024-12-17 22:13:03,080 - INFO - Concatenating numerical and encoded categorical data frames.
+2024-12-17 22:13:03,082 - INFO - Final data frame created with 104 columns.
+2024-12-17 22:13:03,082 - INFO - One Hot Encoding Process completed successfully
+2024-12-17 22:13:03,082 - INFO - Train Test split process started successfully
+2024-12-17 22:13:03,082 - INFO - Separating independent and dependent variables.
+2024-12-17 22:13:03,083 - INFO - Independent variables: 103 columns, Dependent variable: 1 columns.
+2024-12-17 22:13:03,083 - INFO - Splitting data into training and testing sets with test size = 0.1.
+2024-12-17 22:13:03,086 - INFO - Data split completed. Training set size: 2361, Test set size: 263.
+2024-12-17 22:13:03,086 - INFO - Train Test split process started completed successfully
+2024-12-17 22:13:03,086 - INFO - Pipeline Execution Completed Successfully.
+2024-12-17 22:18:17,806 - INFO - Data Processing Pipeline Initialized
+2024-12-17 22:18:17,807 - INFO - DataLoader initialized with file pattern: datasets/*
+2024-12-17 22:18:17,807 - INFO - DataJoiner initialized with join_type: inner, on_column: join_key
+2024-12-17 22:18:17,807 - INFO - ColumnDropper initialized with Columns to drop : ['BSE Code', 'NSE Code', 'Name', 'join_key']
+2024-12-17 22:18:17,807 - INFO - MissingValuePreprocessor initialized with strategy: mean, missing_threshold: 0.1
+2024-12-17 22:18:17,807 - INFO - ColumnRelevancePreprocessor initialized with Correlation Threshold: 0.1, Target Column: Current Price
+2024-12-17 22:18:17,807 - INFO - OutlierRemover initialized
+2024-12-17 22:18:17,807 - INFO - StandardizationPreprocessor initialized
+2024-12-17 22:18:17,807 - INFO - Scaler initialized
+2024-12-17 22:18:17,807 - INFO - OneHotEncoderPreprocessor initialized
+2024-12-17 22:18:17,807 - INFO - OneHotEncoder initialized
+2024-12-17 22:18:17,808 - INFO - TrainTestSplitter initialized with Test Size : 0.1 | Target Variable : Current Price | Random State : 234
+2024-12-17 22:18:17,808 - INFO - Pipeline Execution Started
+2024-12-17 22:18:17,808 - INFO - Loading data from files matching pattern: datasets/*
+2024-12-17 22:18:17,809 - INFO - Found files: ['datasets/other_metrics_final.csv', 'datasets/ratios_1_final.csv', 'datasets/Annual_P_L_1_final.csv', 'datasets/cash_flow_statments_final.csv', 'datasets/Balance_Sheet_final.csv']
+2024-12-17 22:18:17,809 - INFO - Processing file: datasets/other_metrics_final.csv with extension: csv
+2024-12-17 22:18:17,833 - INFO - Skipping column drop for file: datasets/other_metrics_final.csv
+2024-12-17 22:18:17,834 - INFO - Processing file: datasets/ratios_1_final.csv with extension: csv
+2024-12-17 22:18:17,856 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/ratios_1_final.csv
+2024-12-17 22:18:17,858 - INFO - Processing file: datasets/Annual_P_L_1_final.csv with extension: csv
+2024-12-17 22:18:17,880 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/Annual_P_L_1_final.csv
+2024-12-17 22:18:17,881 - INFO - Processing file: datasets/cash_flow_statments_final.csv with extension: csv
+2024-12-17 22:18:17,895 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/cash_flow_statments_final.csv
+2024-12-17 22:18:17,896 - INFO - Processing file: datasets/Balance_Sheet_final.csv with extension: csv
+2024-12-17 22:18:17,915 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/Balance_Sheet_final.csv
+2024-12-17 22:18:17,916 - INFO - Successfully loaded 5 data frames.
+2024-12-17 22:18:17,916 - INFO - Starting join operation with 4 other tables.
+2024-12-17 22:18:17,921 - INFO - Table 1 successfully joined.
+2024-12-17 22:18:17,926 - INFO - Table 2 successfully joined.
+2024-12-17 22:18:17,933 - INFO - Table 3 successfully joined.
+2024-12-17 22:18:17,940 - INFO - Table 4 successfully joined.
+2024-12-17 22:18:17,941 - INFO - Column Dropping Process Started
+2024-12-17 22:18:17,942 - INFO - Columns Dropped successfully
+2024-12-17 22:18:17,943 - INFO - Starting missing value handling process.
+2024-12-17 22:18:17,943 - INFO - Starting column drop based on missing value threshold: 0.1
+2024-12-17 22:18:17,946 - INFO - Successfully dropped columns exceeding missing threshold
+2024-12-17 22:18:17,946 - INFO - Remaining data after dropping columns: 173 columns.
+2024-12-17 22:18:17,971 - INFO - Concatenated numerical and categorical data frames.
+2024-12-17 22:18:17,971 - INFO - Missing value handling process completed successfully.
+2024-12-17 22:18:17,971 - INFO - Starting process for relevant column extraction
+2024-12-17 22:18:17,971 - INFO - Calculating correlation of numerical columns with target.
+2024-12-17 22:18:18,151 - INFO - Filtering columns with correlation greater than threshold: 0.1
+2024-12-17 22:18:18,151 - INFO - Relevant numerical columns based on correlation: ['Current Price', '52w Index', 'Down from 52w high', 'From 52w high', 'NCAVPS', 'Market Capitalization', 'Piotroski score', 'Public holding', 'FII holding', 'DII holding', 'EPS', 'EPS last year', 'EPS preceding year']
+2024-12-17 22:18:18,151 - INFO - Total relevant columns: 14
+2024-12-17 22:18:18,152 - INFO - Relevant Column extracted successfully | Total relevant col : 14
+2024-12-17 22:18:18,153 - INFO - Outlier Removal Process Started
+2024-12-17 22:18:18,157 - INFO - Outlier Removal Process completed successfully
+2024-12-17 22:18:18,157 - INFO - Standardization Process Started
+2024-12-17 22:18:18,158 - INFO - Identifying numerical and categorical columns.
+2024-12-17 22:18:18,158 - INFO - Found 13 numerical columns and 1 categorical columns.
+2024-12-17 22:18:18,158 - INFO - Scaling numerical columns.
+2024-12-17 22:18:18,159 - INFO - Scaling completed for numerical columns.
+2024-12-17 22:18:18,159 - INFO - Concatenating scaled numerical and categorical columns.
+2024-12-17 22:18:18,160 - INFO - Final data frame created with 14 columns.
+2024-12-17 22:18:18,160 - INFO - Standardization Process completed successfully
+2024-12-17 22:18:18,160 - INFO - One Hot Encoding Process started
+2024-12-17 22:18:18,160 - INFO - Separating numerical and categorical columns.
+2024-12-17 22:18:18,160 - INFO - Identified 13 numerical and 1 categorical columns.
+2024-12-17 22:18:18,160 - INFO - Encoding categorical columns using the encoder.
+2024-12-17 22:18:18,162 - INFO - Concatenating numerical and encoded categorical data frames.
+2024-12-17 22:18:18,163 - INFO - Final data frame created with 104 columns.
+2024-12-17 22:18:18,164 - INFO - One Hot Encoding Process completed successfully
+2024-12-17 22:18:18,164 - INFO - Train Test split process started successfully
+2024-12-17 22:18:18,164 - INFO - Separating independent and dependent variables.
+2024-12-17 22:18:18,164 - INFO - Independent variables: 103 columns, Dependent variable: 1 columns.
+2024-12-17 22:18:18,164 - INFO - Splitting data into training and testing sets with test size = 0.1.
+2024-12-17 22:18:18,166 - INFO - Data split completed. Training set size: 2361, Test set size: 263.
+2024-12-17 22:18:18,166 - INFO - Train Test split process started completed successfully
+2024-12-17 22:18:18,166 - INFO - Pipeline Execution Completed Successfully.
+2024-12-17 22:18:29,036 - INFO - Data Processing Pipeline Initialized
+2024-12-17 22:18:29,037 - INFO - DataLoader initialized with file pattern: datasets/*
+2024-12-17 22:18:29,037 - INFO - DataJoiner initialized with join_type: inner, on_column: join_key
+2024-12-17 22:18:29,038 - INFO - ColumnDropper initialized with Columns to drop : ['BSE Code', 'NSE Code', 'Name', 'join_key']
+2024-12-17 22:18:29,038 - INFO - MissingValuePreprocessor initialized with strategy: mean, missing_threshold: 0.1
+2024-12-17 22:18:29,038 - INFO - ColumnRelevancePreprocessor initialized with Correlation Threshold: 0.1, Target Column: Current Price
+2024-12-17 22:18:29,038 - INFO - OutlierRemover initialized
+2024-12-17 22:18:29,038 - INFO - StandardizationPreprocessor initialized
+2024-12-17 22:18:29,038 - INFO - Scaler initialized
+2024-12-17 22:18:29,038 - INFO - OneHotEncoderPreprocessor initialized
+2024-12-17 22:18:29,039 - INFO - OneHotEncoder initialized
+2024-12-17 22:18:29,039 - INFO - TrainTestSplitter initialized with Test Size : 0.15 | Target Variable : Current Price | Random State : 234
+2024-12-17 22:18:29,039 - INFO - Pipeline Execution Started
+2024-12-17 22:18:29,039 - INFO - Loading data from files matching pattern: datasets/*
+2024-12-17 22:18:29,039 - INFO - Found files: ['datasets/other_metrics_final.csv', 'datasets/ratios_1_final.csv', 'datasets/Annual_P_L_1_final.csv', 'datasets/cash_flow_statments_final.csv', 'datasets/Balance_Sheet_final.csv']
+2024-12-17 22:18:29,039 - INFO - Processing file: datasets/other_metrics_final.csv with extension: csv
+2024-12-17 22:18:29,063 - INFO - Skipping column drop for file: datasets/other_metrics_final.csv
+2024-12-17 22:18:29,063 - INFO - Processing file: datasets/ratios_1_final.csv with extension: csv
+2024-12-17 22:18:29,083 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/ratios_1_final.csv
+2024-12-17 22:18:29,083 - INFO - Processing file: datasets/Annual_P_L_1_final.csv with extension: csv
+2024-12-17 22:18:29,106 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/Annual_P_L_1_final.csv
+2024-12-17 22:18:29,106 - INFO - Processing file: datasets/cash_flow_statments_final.csv with extension: csv
+2024-12-17 22:18:29,118 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/cash_flow_statments_final.csv
+2024-12-17 22:18:29,119 - INFO - Processing file: datasets/Balance_Sheet_final.csv with extension: csv
+2024-12-17 22:18:29,136 - INFO - Dropping columns: ['Current Price', 'Market Capitalization'] from file: datasets/Balance_Sheet_final.csv
+2024-12-17 22:18:29,137 - INFO - Successfully loaded 5 data frames.
+2024-12-17 22:18:29,137 - INFO - Starting join operation with 4 other tables.
+2024-12-17 22:18:29,142 - INFO - Table 1 successfully joined.
+2024-12-17 22:18:29,147 - INFO - Table 2 successfully joined.
+2024-12-17 22:18:29,154 - INFO - Table 3 successfully joined.
+2024-12-17 22:18:29,161 - INFO - Table 4 successfully joined.
+2024-12-17 22:18:29,162 - INFO - Column Dropping Process Started
+2024-12-17 22:18:29,163 - INFO - Columns Dropped successfully
+2024-12-17 22:18:29,165 - INFO - Starting missing value handling process.
+2024-12-17 22:18:29,165 - INFO - Starting column drop based on missing value threshold: 0.1
+2024-12-17 22:18:29,168 - INFO - Successfully dropped columns exceeding missing threshold
+2024-12-17 22:18:29,168 - INFO - Remaining data after dropping columns: 173 columns.
+2024-12-17 22:18:29,191 - INFO - Concatenated numerical and categorical data frames.
+2024-12-17 22:18:29,191 - INFO - Missing value handling process completed successfully.
+2024-12-17 22:18:29,191 - INFO - Starting process for relevant column extraction
+2024-12-17 22:18:29,191 - INFO - Calculating correlation of numerical columns with target.
+2024-12-17 22:18:29,369 - INFO - Filtering columns with correlation greater than threshold: 0.1
+2024-12-17 22:18:29,369 - INFO - Relevant numerical columns based on correlation: ['Current Price', '52w Index', 'Down from 52w high', 'From 52w high', 'NCAVPS', 'Market Capitalization', 'Piotroski score', 'Public holding', 'FII holding', 'DII holding', 'EPS', 'EPS last year', 'EPS preceding year']
+2024-12-17 22:18:29,369 - INFO - Total relevant columns: 14
+2024-12-17 22:18:29,370 - INFO - Relevant Column extracted successfully | Total relevant col : 14
+2024-12-17 22:18:29,370 - INFO - Outlier Removal Process Started
+2024-12-17 22:18:29,374 - INFO - Outlier Removal Process completed successfully
+2024-12-17 22:18:29,374 - INFO - Standardization Process Started
+2024-12-17 22:18:29,374 - INFO - Identifying numerical and categorical columns.
+2024-12-17 22:18:29,374 - INFO - Found 13 numerical columns and 1 categorical columns.
+2024-12-17 22:18:29,374 - INFO - Scaling numerical columns.
+2024-12-17 22:18:29,376 - INFO - Scaling completed for numerical columns.
+2024-12-17 22:18:29,376 - INFO - Concatenating scaled numerical and categorical columns.
+2024-12-17 22:18:29,376 - INFO - Final data frame created with 14 columns.
+2024-12-17 22:18:29,376 - INFO - Standardization Process completed successfully
+2024-12-17 22:18:29,376 - INFO - One Hot Encoding Process started
+2024-12-17 22:18:29,376 - INFO - Separating numerical and categorical columns.
+2024-12-17 22:18:29,377 - INFO - Identified 13 numerical and 1 categorical columns.
+2024-12-17 22:18:29,377 - INFO - Encoding categorical columns using the encoder.
+2024-12-17 22:18:29,378 - INFO - Concatenating numerical and encoded categorical data frames.
+2024-12-17 22:18:29,379 - INFO - Final data frame created with 104 columns.
+2024-12-17 22:18:29,379 - INFO - One Hot Encoding Process completed successfully
+2024-12-17 22:18:29,379 - INFO - Train Test split process started successfully
+2024-12-17 22:18:29,379 - INFO - Separating independent and dependent variables.
+2024-12-17 22:18:29,379 - INFO - Independent variables: 103 columns, Dependent variable: 1 columns.
+2024-12-17 22:18:29,379 - INFO - Splitting data into training and testing sets with test size = 0.15.
+2024-12-17 22:18:29,380 - INFO - Data split completed. Training set size: 2230, Test set size: 394.
+2024-12-17 22:18:29,381 - INFO - Train Test split process started completed successfully
+2024-12-17 22:18:29,381 - INFO - Pipeline Execution Completed Successfully.
